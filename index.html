@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CM3202 Example</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<!-- Gets the leaflet css from it's online source -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<body>
+    <div id="login">
+		<!-- The client_id is from the Foursquare App that has been created,
+			 and the redirect URI has been set to return back to the application
+			 [in this case it returns to localhost/cm3202/ where the application is being developed] -->
+		<p>Login with <a href="https://foursquare.com/oauth2/authenticate?client_id=YOUR_CLIENT_ID&response_type=token&redirect_uri=REDIRECT_URL">foursquare</a>
+		</p>
+		
+		<!-- BEGIN EXTENSION ADDITIONS -->
+		<p style="margin-top:-16px;">
+			<!-- A key to show which venues have been recommended to the user.
+				 These venues will be returned when there is an auth (access_token)
+				 stored within the javascript localStorage -->
+			<span style="padding-right:20px;">
+				Key: <img src='img/new/rec.png' height=30> = Recommended
+			</span>
+			<!-- Checkboxes will allow the user to filter between the venues which will be displayed on the map,
+			 	 they also have an onclick value which calls the viewMarkers() javascript to take these filters into
+				 effect immediately -->
+			Filter venues:
+			<label for="drinks">Drinks</label><input type="checkbox" onclick="viewMarkers()" value="drinks" class="drinks filters"></input>
+			<label for="shops">Shops</label><input type="checkbox" value="shops" onclick="viewMarkers()" class="shops filters"></input>
+			<label for="food">Food</label><input type="checkbox" value="food" onclick="viewMarkers()" class="food filters"></input>
+			<!-- This button calls the clearNames() function when clicked, which will clear out the javascript localStorage
+			 	 except for the foursquareauth code (if there is one present) -->
+			<button type="button" onclick="clearNames()" value="Clear nicknames">Clear nicknames</button>
+		</p>
+		<!-- END EXTENSION ADDITIONS -->
+	</div>
+    <div id="map"></div>
+
+	<!-- Gets the leaflet javascript library from it's online source -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+	<!-- Gets the jQuery javascript library from it's online source -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	<!-- Gets the javascript application to initialise and generate the objects on the page -->
+    <script type="text/javascript" src="js/maps.js"></script>
+</body>
+</html>
