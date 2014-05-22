@@ -7,3 +7,5 @@ The application is map-based and allows a user to view venues located in the sea
 Leaflet and jQuery libraries were also used in this application.
 
 This coursework was delivered in March 2014 and received full marks.
+
+![Application screenshot](img/screenshot.png "Screenshot")
